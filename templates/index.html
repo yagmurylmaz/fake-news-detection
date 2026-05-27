@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake News Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Fake News Detection</h1>
+            <p class="subtitle">Haber metnini gir, model FAKE veya REAL tahmini yapsin.</p>
+
+            {% if not model_loaded %}
+            <div class="alert">
+                <strong>Model yuklenemedi:</strong> {{ load_error }}<br />
+                Once <code>python train_model.py</code> komutunu calistirin.
+            </div>
+            {% endif %}
+
+            <form action="/predict" method="POST">
+                <label for="news_text">Haber Metni</label>
+                <textarea
+                    id="news_text"
+                    name="news_text"
+                    placeholder="Haber metnini buraya yapistirin..."
+                    required
+                ></textarea>
+                <button type="submit">Tahmin Et</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

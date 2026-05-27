@@ -1,0 +1,169 @@
+﻿:root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --danger: #ef4444;
+    --success: #22c55e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0b1220, #111827);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.container {
+    width: 100%;
+    max-width: 860px;
+}
+
+.card {
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+h1 {
+    margin-bottom: 8px;
+    font-size: 2rem;
+}
+
+.subtitle {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+textarea {
+    width: 100%;
+    min-height: 220px;
+    resize: vertical;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 1rem;
+    line-height: 1.5;
+    background: #0f172a;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+textarea:focus {
+    outline: 2px solid var(--primary);
+    border-color: transparent;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: var(--primary-hover);
+}
+
+.alert {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #fecaca;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.result-card {
+    border-radius: 12px;
+    padding: 16px;
+    margin: 12px 0 20px;
+    border: 1px solid;
+}
+
+.result-card.fake {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.6);
+}
+
+.result-card.real {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.6);
+}
+
+.result-label {
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.actions {
+    margin: 14px 0 22px;
+}
+
+.btn-secondary {
+    display: inline-block;
+    text-decoration: none;
+    background: #334155;
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 10px;
+}
+
+.btn-secondary:hover {
+    background: #475569;
+}
+
+.cm-section h3 {
+    margin-bottom: 10px;
+}
+
+.cm-section img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+@media (max-width: 640px) {
+    .card {
+        padding: 18px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    textarea {
+        min-height: 180px;
+    }
+}

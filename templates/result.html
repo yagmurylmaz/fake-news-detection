@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tahmin Sonucu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Tahmin Sonucu</h1>
+
+            {% if error %}
+                <div class="alert error">{{ error }}</div>
+            {% else %}
+                <div class="result-card {{ 'fake' if prediction == 'FAKE' else 'real' }}">
+                    <p class="result-label">Tahmin</p>
+                    <h2>{{ prediction }}</h2>
+                    <p><strong>Guven:</strong> %{{ confidence }}</p>
+                    <p><strong>Model Accuracy:</strong> %{{ model_accuracy }}</p>
+                </div>
+            {% endif %}
+
+            <div class="actions">
+                <a href="/" class="btn-secondary">Yeni Metin Dene</a>
+            </div>
+
+            <div class="cm-section">
+                <h3>Confusion Matrix</h3>
+                <img src="{{ url_for('static', filename='confusion_matrix.png') }}"
+                     alt="Confusion Matrix"
+                     onerror="this.style.display='none'; document.getElementById('cm-msg').style.display='block';" />
+                <p id="cm-msg" style="display:none;">Confusion matrix gorseli icin once modeli egitin.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
