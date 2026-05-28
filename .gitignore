@@ -22,3 +22,8 @@ vectorizer.pkl
 
 # Optional logs
 *.log
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
