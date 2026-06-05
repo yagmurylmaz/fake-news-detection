@@ -38,6 +38,7 @@ fake-news-detector/
 |-- README.md
 |-- .gitignore
 |-- dataset/
+|   |-- sample_news.csv
 |   |-- news.csv
 |-- static/
 |   |-- style.css
@@ -49,7 +50,21 @@ fake-news-detector/
 |   |-- preprocess.py
 ```
 
-## Dataset (Kaggle)
+## Dataset
+
+### Demo (hizli baslangic)
+
+Repo icinde `dataset/sample_news.csv` bulunur:
+- 1000 satir (500 FAKE + 500 REAL)
+- GitHub'a sigar, clone sonrasi hemen calisir
+
+```bash
+python train_model.py --sample
+```
+
+`news.csv` yoksa script otomatik olarak demo verisini kullanir.
+
+### Tam veri (Kaggle)
 
 Kaggle **Fake and Real News Dataset** kullanilir.
 
@@ -115,6 +130,14 @@ python prepare_data.py
 `dataset/news.csv` zaten hazirsa bu adimi atlayabilirsin.
 
 ### 1) Modeli Egit
+
+Demo veri ile:
+
+```bash
+python train_model.py --sample
+```
+
+Tam Kaggle verisi ile (`news.csv` hazirsa):
 
 ```bash
 python train_model.py

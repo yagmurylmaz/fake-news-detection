@@ -1,4 +1,5 @@
-﻿import os
+﻿import argparse
+import os
 import pickle
 import warnings
 
@@ -14,7 +15,8 @@ from utils.preprocess import clean_text
 
 warnings.filterwarnings("ignore")
 
-DATASET_PATH = "dataset/news.csv"
+FULL_DATASET_PATH = "dataset/news.csv"
+SAMPLE_DATASET_PATH = "dataset/sample_news.csv"
 MODEL_PATH = "model.pkl"
 VECTORIZER_PATH = "vectorizer.pkl"
 CM_FIG_PATH = "static/confusion_matrix.png"
@@ -52,9 +54,17 @@ def load_dataset(path: str) -> pd.DataFrame:
     return df
 
 
-def train() -> None:
-    print("1) Dataset yukleniyor...")
-    df = load_dataset(DATASET_PATH)
+def resolve_dataset_path(use_sample: bool = False) -> str:
+    if use_sample:
+        return SAMPLE_DATASET_PATH
+    if os.path.exists(FULL_DATASET_PATH):
+        return FULL_DATASET_PATH
+    return SAMPLE_DATASET_PATH
+
+
+def train(dataset_path: str) -> None:
+    print(f"1) Dataset yukleniyor: {dataset_path}")
+    df = load_dataset(dataset_path)
 
     print("2) Metin temizleniyor...")
     df["clean_text"] = df["text"].apply(clean_text)
@@ -116,7 +126,15 @@ def train() -> None:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Fake news model egitimi")
+    parser.add_argument(
+        "--sample",
+        action="store_true",
+        help="Demo veri seti ile egit (dataset/sample_news.csv)",
+    )
+    args = parser.parse_args()
+
     try:
-        train()
+        train(resolve_dataset_path(use_sample=args.sample))
     except Exception as exc:
         print(f"Hata olustu: {exc}")
