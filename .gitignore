@@ -20,6 +20,11 @@ Thumbs.db
 model.pkl
 vectorizer.pkl
 
+# Dataset (too large for GitHub; use prepare_data.py)
+dataset/news.csv
+dataset/True.csv
+dataset/Fake.csv
+
 # Optional logs
 *.log
 

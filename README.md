@@ -31,6 +31,7 @@ fake-news-detector/
 |
 |-- app.py
 |-- train_model.py
+|-- prepare_data.py
 |-- model.pkl
 |-- vectorizer.pkl
 |-- requirements.txt
@@ -50,11 +51,29 @@ fake-news-detector/
 
 ## Dataset (Kaggle)
 
-Kaggle Fake and Real News dataset kullanin.  
-`dataset/news.csv` icinde su sutunlar olmali:
+Kaggle **Fake and Real News Dataset** kullanilir.
+
+1. Kaggle'dan zip indir ve icinden `Fake.csv` ile `True.csv` dosyalarini cikar.
+2. `Fake.csv` dosyasini `dataset/news.csv` olarak kaydet.
+3. `True.csv` dosyasini `dataset/True.csv` olarak kaydet.
+4. Veriyi birlestir:
+
+```bash
+python prepare_data.py
+```
+
+`prepare_data.py` su islemleri yapar:
+- `title` + `text` alanlarini birlestirir
+- Sahte haberlere `FAKE`, gercek haberlere `REAL` etiketi ekler
+- Sonucu `dataset/news.csv` dosyasina yazar
+
+Hazir `news.csv` icinde su sutunlar olmali:
 
 - `text`: haber metni
-- `label`: `FAKE` veya `REAL` (veya 0/1, script donusturur)
+- `label`: `FAKE` veya `REAL`
+
+> **Not:** `news.csv` dosyasi GitHub'a yuklenmez (dosya boyutu cok buyuk).
+> Veriyi Kaggle'dan indirip `prepare_data.py` ile yerelde olusturman gerekir.
 
 ## Installation
 
@@ -84,6 +103,16 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+
+### 0) Veriyi Hazirla (ilk kurulumda)
+
+Kaggle'dan indirdiysen:
+
+```bash
+python prepare_data.py
+```
+
+`dataset/news.csv` zaten hazirsa bu adimi atlayabilirsin.
 
 ### 1) Modeli Egit
 
